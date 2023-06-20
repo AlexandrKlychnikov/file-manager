@@ -1,0 +1,23 @@
+{
+  "name": "file-manager",
+  "version": "1.0.0",
+  "description": "This repository is for training and practice of nodejs",
+  "type": "module",
+  "scripts": {
+    "start": "node src/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlexandrKlychnikov/file-manager.git"
+  },
+  "keywords": [
+    "nodejs",
+    "AlexandrKlychnikov"
+  ],
+  "author": "AlexandrKlychnikov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlexandrKlychnikov/node-nodejs-basics/issues"
+  },
+  "homepage": "https://github.com/AlexandrKlychnikov/node-nodejs-basics#readme"
+}
