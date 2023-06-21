@@ -2,7 +2,10 @@ import { stdin, stdout } from 'process';
 import os from 'os';
 import checkProperSart from './utils/checkProperStart.js'
 import sayWelcome from './utils/sayWelcome.js';
+import sayGoodbye from './utils/sayGoodBye.js';
 import readline from 'node:readline';
+import commander from './utils/commander.js';
+import showCurrentDir from './utils/showCurrentDir.js';
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -12,28 +15,18 @@ const rl = readline.createInterface({
 
 const username = checkProperSart();
 const homedir = os.homedir();
-sayWelcome(username, homedir);
+let current = { dir: homedir };
 
+sayWelcome(username);
+showCurrentDir(homedir);
 rl.prompt();
 
-rl.on('line', (line) => {
-    switch (line.trim()) {
-        case 'SIGINT':
-            process.exit()
-            break;
-        case '.exit':
-            process.exit()
-            break;
-        case 'yes':
-            console.log('It works!')
-            break;
-        default:
-            console.log('Invalid input');
-            break;
-    }
-    rl.prompt();
+rl.on('line', async (line) => {
+  await commander(line, current, username);
+  showCurrentDir(current.dir)
+  rl.prompt();
 }).on('close', () => {
-  console.log(`\nThank you for using File Manager, ${username}, goodbye!`)
+    sayGoodbye(username);
     process.exit(0);
 });
 
