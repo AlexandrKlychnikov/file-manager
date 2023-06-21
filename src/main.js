@@ -1,13 +1,41 @@
 import { stdin, stdout } from 'process';
 import os from 'os';
 import checkProperSart from './utils/checkProperStart.js'
-import sayWelcomeOrGoodbye from './utils/sayWelcomeOrGoodbye.js';
+import sayWelcome from './utils/sayWelcome.js';
+import readline from 'node:readline';
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+  prompt: 'print command> '
+});
 
 const username = checkProperSart();
 const homedir = os.homedir();
-sayWelcomeOrGoodbye(username, homedir);
-process.on('SIGINT', () => process.exit());
+sayWelcome(username, homedir);
 
-stdin.on('data', data => {
-  if (data.toString().slice(0, data.toString().indexOf('\n') - 1) === '.exit') process.exit();
+rl.prompt();
+
+rl.on('line', (line) => {
+    switch (line.trim()) {
+        case 'SIGINT':
+            process.exit()
+            break;
+        case '.exit':
+            process.exit()
+            break;
+        case 'yes':
+            console.log('It works!')
+            break;
+        default:
+            console.log('Invalid input');
+            break;
+    }
+    rl.prompt();
+}).on('close', () => {
+  console.log(`\nThank you for using File Manager, ${username}, goodbye!`)
+    process.exit(0);
 });
+
+
+
