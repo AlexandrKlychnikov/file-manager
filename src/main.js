@@ -7,23 +7,22 @@ import readline from 'node:readline';
 import commander from './utils/commander.js';
 import showCurrentDir from './utils/showCurrentDir.js';
 
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout,
-  prompt: 'print command> '
-});
-
 const username = checkProperSart();
 const homedir = os.homedir();
 let current = { dir: homedir };
 
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+  prompt: showCurrentDir(homedir)
+});
+
 sayWelcome(username);
-showCurrentDir(homedir);
 rl.prompt();
 
 rl.on('line', async (line) => {
   await commander(line, current, username);
-  showCurrentDir(current.dir)
+  rl.setPrompt(showCurrentDir(current.dir));
   rl.prompt();
 }).on('close', () => {
     sayGoodbye(username);
