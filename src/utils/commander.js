@@ -3,6 +3,7 @@ import up from './up.js';
 import cd from './cd.js'
 import ls from './ls.js';
 import cat from './cat.js';
+import add from './add.js';
 
 const commander = async (line, current, username) => {
   const parsedLine = line.trim().split(' ');
@@ -24,6 +25,9 @@ const commander = async (line, current, username) => {
         break;
     case 'cat':
         await cat(current.dir, args[0])
+        break;
+    case 'add':
+        await add(current.dir, args[0])
         break;
     default:
         console.log('Invalid input');
