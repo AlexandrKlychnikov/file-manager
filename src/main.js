@@ -21,7 +21,7 @@ sayWelcome(username);
 rl.prompt();
 
 rl.on('line', async (line) => {
-  await commander(line, current, username);
+  await commander(line, current, username, rl);
   rl.setPrompt(showCurrentDir(current.dir));
   rl.prompt();
 }).on('close', () => {

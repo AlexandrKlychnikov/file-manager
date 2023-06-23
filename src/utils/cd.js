@@ -8,6 +8,8 @@ const cd = async(current, newpath) => {
 
   if (await isDirectory(newCurrentDir)) {
     current.dir = newCurrentDir;
+  } else {
+    console.error('Operation failed')
   }
 
 }

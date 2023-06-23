@@ -2,6 +2,7 @@ import sayGoodbye from './sayGoodBye.js';
 import up from './up.js';
 import cd from './cd.js'
 import ls from './ls.js';
+import cat from './cat.js';
 
 const commander = async (line, current, username) => {
   const parsedLine = line.trim().split(' ');
@@ -20,6 +21,9 @@ const commander = async (line, current, username) => {
         break;
     case 'ls':
         await ls(current.dir)
+        break;
+    case 'cat':
+        await cat(current.dir, args[0])
         break;
     default:
         console.log('Invalid input');
