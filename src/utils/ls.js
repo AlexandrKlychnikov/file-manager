@@ -15,7 +15,7 @@ const ls = async(dir) => {
           }
       }
   } catch (err) {
-      throw new Error('Operation failed');
+      console.error('Operation failed');
   }
   fileArr.sort();
   dirArr.sort();

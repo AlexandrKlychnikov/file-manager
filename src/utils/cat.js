@@ -3,18 +3,21 @@ import path from 'path';
 
 const cat = async (dir, file) => {
     const filePath = path.resolve(dir, file);
-    const stream = fs.createReadStream(filePath);
 
     const print = async (readable) => {
-       readable.setEncoding('utf8');
-       let data = '';
-       for await (const chunk of readable) {
-         data += chunk;
-       }
-       console.log(data);
+      try {
+        readable.setEncoding('utf8');
+        let data = '';
+        for await (const chunk of readable) {
+          data += chunk;
+        }
+        console.log(data);
+      } catch {
+        console.error('Operation failed');
+      }
     }
 
-     await print(fs.createReadStream(filePath)).catch(console.error);
+     await print(fs.createReadStream(filePath));
 
 }
 
