@@ -5,6 +5,10 @@ import prompt from './prompt.js';
 import handleError from './handleError.js';
 
 const compress = async(filePath, pathToDestination, dir) => {
+  if (!filePath || !pathToDestination) {
+    console.log('Invalid input');
+    return
+  }
   return new Promise((resolve, reject) => {
     const compress = zlib.createBrotliCompress();
     const input = fs.createReadStream(filePath);

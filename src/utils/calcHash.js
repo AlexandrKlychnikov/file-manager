@@ -16,6 +16,10 @@ const checksumFile = (hashName, path, dir) => {
 }
 
 const calcHash = async (file, dir) => {
+  if (!file) {
+    console.log('Invalid input');
+    return
+  }
   const data = await checksumFile('sha256', file, dir)
   console.log(data)
 };

@@ -4,6 +4,10 @@ import prompt from './prompt.js';
 import handleError from './handleError.js';
 
 const decompress = (filePath, pathToDestination, dir) => {
+  if (!filePath || !pathToDestination) {
+    console.log('Invalid input');
+    return
+  }
   return new Promise((resolve, reject) => {
     const decompress = zlib.createBrotliDecompress();
     const input = fs.createReadStream(filePath);

@@ -47,7 +47,7 @@ const commander = async (line, current, username) => {
         await mv(current.dir, args[0], args[1])
         break;
     case 'rm':
-        await rm(args[0])
+        await rm(current.dir, args[0])
         break;
     case 'os':
         await operSys(args[0])

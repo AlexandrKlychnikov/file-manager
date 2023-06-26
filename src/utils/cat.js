@@ -2,6 +2,10 @@ import fs from 'fs';
 import path from 'path';
 
 const cat = async (dir, file) => {
+  if (!file) {
+    console.log('Invalid input');
+    return
+  }
     const filePath = path.resolve(dir, file);
 
     const print = async (readable) => {
