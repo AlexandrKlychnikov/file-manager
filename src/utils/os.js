@@ -2,7 +2,7 @@ import os from 'os';
 
 const operSys = async (arg) => {
   const methods = {
-    '--EOL': JSON.stringify(os.EOL),
+    '--EOL': () => JSON.stringify(os.EOL),
     '--cpus': () => {
       const cpus = os.cpus();
       return `overall amount of CPUS: ${cpus.length} \n${cpus.map((e, i) => {

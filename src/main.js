@@ -21,9 +21,9 @@ sayWelcome(username);
 rl.prompt();
 
 rl.on('line', async (line) => {
-  await commander(line, current, username, rl);
-  rl.setPrompt(showCurrentDir(current.dir));
-  rl.prompt();
+  await commander(line, current, username);
+    rl.setPrompt(showCurrentDir(current.dir));
+    rl.prompt();
 }).on('close', () => {
     sayGoodbye(username);
     process.exit(0);

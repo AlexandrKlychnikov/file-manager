@@ -9,6 +9,7 @@ import cp from './cp.js';
 import rm from './rm.js';
 import mv from './mv.js';
 import operSys from './os.js';
+import calcHash from './calcHash.js';
 
 const commander = async (line, current, username) => {
   const parsedLine = line.trim().split(' ');
@@ -48,6 +49,9 @@ const commander = async (line, current, username) => {
         break;
     case 'os':
         await operSys(args[0])
+        break;
+    case 'hash':
+        await calcHash(args[0], current.dir)
         break;
     default:
         console.log('Invalid input');
