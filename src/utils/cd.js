@@ -1,5 +1,4 @@
 import path from 'path';
-import { access, constants } from 'node:fs/promises';
 import isDirectory from './isDirectory.js';
 
 const cd = async(current, newpath) => {

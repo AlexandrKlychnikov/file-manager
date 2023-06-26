@@ -1,7 +1,5 @@
 import fs from 'fs';
-import path from 'path';
 import crypto from 'crypto';
-import url from 'url'
 import prompt from './prompt.js';
 
 const checksumFile = (hashName, path, dir) => {

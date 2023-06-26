@@ -1,14 +1,14 @@
 import fs from 'fs';
 import path from 'path';
 import rm from './rm.js';
-import errorHandler from './errorHandler.js';
+import errorCounter from './errorCounter.js';
 
 const mv = async (dir, file, newDir) => {
   const filePath = path.resolve(dir, file);
   const newFile = path.join(newDir, path.win32.basename(filePath));
   const readable = fs.createReadStream(filePath);
   const writeable = fs.createWriteStream(newFile);
-  const handleError = errorHandler(dir);
+  const handleError = errorCounter(dir);
   readable.on('error', () => handleError())
   writeable.on('error', () => handleError())
   readable.pipe(writeable);

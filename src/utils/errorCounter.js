@@ -1,7 +1,7 @@
 import showCurrentDir from "./showCurrentDir.js"
 
 
-const errorHandler = (dir) => {
+const errorCounter = (dir) => {
   let counter = 0
   return () => {
     if (!counter) {
@@ -12,4 +12,4 @@ const errorHandler = (dir) => {
   }
 }
 
-export default errorHandler;
+export default errorCounter;

@@ -10,6 +10,8 @@ import rm from './rm.js';
 import mv from './mv.js';
 import operSys from './os.js';
 import calcHash from './calcHash.js';
+import compress from './compress.js';
+import decompress from './decompress.js';
 
 const commander = async (line, current, username) => {
   const parsedLine = line.trim().split(' ');
@@ -52,6 +54,12 @@ const commander = async (line, current, username) => {
         break;
     case 'hash':
         await calcHash(args[0], current.dir)
+        break;
+    case 'compress':
+        await compress(args[0], args[1], current.dir)
+        break;
+    case 'decompress':
+        await decompress(args[0], args[1], current.dir)
         break;
     default:
         console.log('Invalid input');
